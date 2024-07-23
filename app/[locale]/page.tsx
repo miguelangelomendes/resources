@@ -1,4 +1,5 @@
 "use client";
+import DownloadFolder from "@/ui/download";
 import ExampleDropdown from "@/ui/Dropdown/example";
 import PageSection from "@/ui/Sections";
 
@@ -37,6 +38,7 @@ export default function Home() {
             <section.exampleComponent />
           </PageSection>
         ))}
+        <DownloadFolder />
       </div>
     </div>
   );
