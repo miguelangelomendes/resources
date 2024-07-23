@@ -6,7 +6,16 @@ function DownloadFolder() {
 
   const handleDownloadFolder = async () => {
     setDownloading(true);
-    const res = await fetch(`/api/download?folder=ui/Dropdown&folder=utils/countries.ts`);
+    const res = await fetch(`/api/download`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        folders: ["ui/Dropdown", "utils/countries.ts"],
+      }),
+    });
+    // const res = await fetch(`/api/download?folder=ui/Dropdown&folder=utils/countries.ts`);
     const blob = await res.blob();
     const url = window.URL.createObjectURL(new Blob([blob]));
     const link = document.createElement("a");

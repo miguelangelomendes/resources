@@ -3,11 +3,24 @@ import fs from "fs";
 import { NextRequest, NextResponse } from "next/server";
 import JSZip from "jszip";
 
-export const GET = async (req: NextRequest) => {
+async function streamToString(stream: any) {
+  const chunks = [];
+  for await (const chunk of stream) {
+    chunks.push(chunk);
+  }
+  return Buffer.concat(chunks).toString("utf8");
+}
+
+export const POST = async (req: NextRequest) => {
   try {
-    const searchParams = await req.nextUrl.searchParams;
-    const folders = searchParams.getAll("folder");
-    if (folders.length === 0) {
+    if (!req.body) {
+      return NextResponse.json({ message: "Please provide folder names" }, { status: 400 });
+    }
+
+    const data = JSON.parse(await streamToString(req.body));
+    const folders = data?.folders || [];
+
+    if (!folders || folders.length === 0) {
       return NextResponse.json({ message: "Please provide folder names" }, { status: 400 });
     }
 
