@@ -1,0 +1,7 @@
+command: ./before_build.sh
+services:
+  gg13resources:
+    container_name: gg13resources
+    build: .
+    ports:
+      - "3000:3000"

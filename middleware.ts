@@ -1,4 +1,5 @@
 import { createI18nMiddleware } from "next-international/middleware";
+import { NextRequest, NextResponse, userAgent } from "next/server";
 
 export const config = {
   // matcher: '/:lng*'
@@ -12,5 +13,7 @@ const I18nMiddleware = createI18nMiddleware({
 });
 
 export function middleware(req: any) {
+  const all = userAgent(req);
+
   return I18nMiddleware(req);
 }

@@ -1,18 +1,22 @@
 "use client";
-import * as React from "react";
+import { useState } from "react";
 
-function DownloadFolder() {
-  const [downloading, setDownloading] = React.useState(false);
+interface Props {
+  fileName: string;
+}
+
+export default function DownloadComponent({ fileName }: Props) {
+  const [downloading, setDownloading] = useState(false);
 
   const handleDownloadFolder = async () => {
     setDownloading(true);
-    const res = await fetch(`/api/download`, {
+    const res = await fetch(`/api/component`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        folders: ["ui/Dropdown", "utils/countries.ts"],
+        fileName,
       }),
     });
     // const res = await fetch(`/api/download?folder=ui/Dropdown&folder=utils/countries.ts`);
@@ -20,14 +24,19 @@ function DownloadFolder() {
     const url = window.URL.createObjectURL(new Blob([blob]));
     const link = document.createElement("a");
     link.href = url;
-    link.setAttribute("download", "Dropdown.zip");
+    link.setAttribute("download", fileName);
     document.body.appendChild(link);
     link.click();
     link.remove();
     setDownloading(false);
   };
 
-  return <button onClick={handleDownloadFolder}>{downloading ? "Downloading..." : "Download"}</button>;
+  return (
+    <button
+      className="clickable rounded-md bg-secondary-500 px-4 py-2 hover:bg-secondary-400"
+      onClick={handleDownloadFolder}
+    >
+      {downloading ? "Downloading..." : "Download"}
+    </button>
+  );
 }
-
-export default DownloadFolder;

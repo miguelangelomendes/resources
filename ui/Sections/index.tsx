@@ -1,4 +1,5 @@
 import CodeBlock from "@/ui/CodeBlock";
+import DownloadComponent from "@/ui/DownloadComponent";
 import { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -7,10 +8,18 @@ interface Props {
   children: ReactNode;
   description?: string;
   externalDependencies?: any[];
+  download?: any;
   className?: string;
 }
 
-export default function PageSection({ title, children, description, externalDependencies, className = "" }: Props) {
+export default function PageSection({
+  title,
+  children,
+  description,
+  externalDependencies,
+  download,
+  className = "",
+}: Props) {
   return (
     <div className={twMerge("space-y-5", className)}>
       <h1 className="text-2xl font-bold">{title}</h1>
@@ -35,6 +44,7 @@ export default function PageSection({ title, children, description, externalDepe
               ))}
             </ul>
           </div>
+          <DownloadComponent fileName={download.fileName} />
         </div>
         <div className="rounded-xl border border-primary-900 p-10">{children}</div>
       </div>

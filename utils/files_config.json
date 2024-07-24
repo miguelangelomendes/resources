@@ -1,0 +1,10 @@
+{
+  "dropdown": {
+    "output": "Dropdown.zip",
+    "sources": ["./ui/Dropdown", "./modules/App/context.tsx", "./utils/countries.ts"]
+  },
+  "Accordion": {
+    "output": "Accordion.zip",
+    "sources": ["./ui/Sections", "./modules/App/context.tsx", "./utils/countries.ts"]
+  }
+}

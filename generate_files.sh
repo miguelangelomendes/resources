@@ -21,14 +21,8 @@ while [[ $# -gt 0 ]]; do
   esac
   shift
 done
-BATATA=(
-  "./ui/Dropdown" "./modules/App/context.tsx" "./utils/countries.ts"
-)
 
-echo "BATATA: ${SOURCES[@]}"
-echo "Copying files... $SOURCES"
-echo "Destination folder: $DEST_NAME"
-DEST_DIR="./public/downloads/$DEST_NAME/"
+DEST_DIR="./public/downloads/temp-$DEST_NAME/"
 
 # Function to copy files while preserving directory structure
 copy_files() {
@@ -46,6 +40,6 @@ for SOURCE in "${SOURCES[@]}"; do
 done
 # Zip the destination folder
 cd public/downloads/
-zip -r "$DEST_NAME.zip" "$DEST_NAME"
-rm -rf "$DEST_NAME"
+zip -r "$DEST_NAME" "temp-$DEST_NAME"
+rm -rf "temp-$DEST_NAME"
 echo "Files copied successfully."

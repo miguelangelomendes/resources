@@ -1,7 +1,6 @@
 import path from "path";
 import fs from "fs";
 import { NextRequest, NextResponse } from "next/server";
-import JSZip from "jszip";
 
 async function streamToString(stream: any) {
   const chunks = [];
@@ -18,44 +17,10 @@ export const POST = async (req: NextRequest) => {
     }
 
     const data = JSON.parse(await streamToString(req.body));
-    const folders = data?.folders || [];
-
-    if (!folders || folders.length === 0) {
-      return NextResponse.json({ message: "Please provide folder names" }, { status: 400 });
-    }
-
-    const zip = new JSZip();
-
-    const scanFolder = async (folderPath: string, parentFolder: string = "", original: string = "") => {
-      if (!fs.existsSync(folderPath)) {
-        return;
-      }
-      if (!fs.lstatSync(folderPath).isDirectory()) {
-        const fileContent = fs.readFileSync(folderPath);
-        return zip.file(original, fileContent);
-      }
-      const files = fs.readdirSync(folderPath);
-      for (const fileName of files) {
-        const filePath = path.join(folderPath, fileName);
-        const stats = fs.statSync(filePath);
-        if (stats.isDirectory()) {
-          const newParentFolder = path.join(parentFolder, fileName);
-          await scanFolder(filePath, newParentFolder, original);
-        } else {
-          const fileContent = fs.readFileSync(filePath);
-          const relativeFilePath = path.join(parentFolder, fileName);
-          const zipFilePath = path.join(original, relativeFilePath);
-          zip.file(zipFilePath, fileContent);
-        }
-      }
-    };
-
-    for (const folder of folders) {
-      const componentPath = path.join(process.cwd(), "/", folder);
-      await scanFolder(componentPath, "", folder);
-    }
-
-    const zipContent = await zip.generateAsync({ type: "nodebuffer" });
+    const fileName = data?.fileName || "archive.zip";
+    const fullPath = path.join(process.cwd(), "./public/downloads/", fileName);
+    const zipContent = fs.readFileSync(fullPath);
+    console.log("zipContent", zipContent);
 
     return new NextResponse(zipContent, {
       status: 200,
