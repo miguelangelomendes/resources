@@ -13,7 +13,7 @@ async function streamToString(stream: any) {
 export const POST = async (req: NextRequest) => {
   try {
     if (!req.body) {
-      return NextResponse.json({ message: "Please provide folder names" }, { status: 400 });
+      return NextResponse.json({ message: "Please provide file name" }, { status: 400 });
     }
 
     const data = JSON.parse(await streamToString(req.body));
@@ -25,7 +25,7 @@ export const POST = async (req: NextRequest) => {
     return new NextResponse(zipContent, {
       status: 200,
       headers: {
-        "Content-Disposition": `attachment; filename=archive.zip`,
+        "Content-Disposition": `attachment; filename=${fileName}`,
         "Content-Type": "application/zip",
       },
     });

@@ -44,7 +44,7 @@ export default function PageSection({
               ))}
             </ul>
           </div>
-          <DownloadComponent fileName={download.fileName} />
+          <DownloadComponent fileName={download.output} />
         </div>
         <div className="rounded-xl border border-primary-900 p-10">{children}</div>
       </div>
