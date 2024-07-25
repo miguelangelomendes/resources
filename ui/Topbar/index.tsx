@@ -5,5 +5,5 @@ interface Props {
 }
 
 export default function Topbar({ className = "" }: Props) {
-  return <div className={twMerge("h-20 w-full bg-red-500", className)}></div>;
+  return <div className={twMerge("h-20 w-full border-b", className)}></div>;
 }
