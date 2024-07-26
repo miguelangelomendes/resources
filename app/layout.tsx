@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "react-smartbanner/dist/main.css";
 import Head from "next/head";
 
 const inter = Inter({
@@ -9,11 +10,6 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-export const metadata: Metadata = {
-  title: "GhostGun13 Resources",
-  description: "A collection of resources for nextjs by GhostGun13.",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -21,9 +17,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`dark scroll-smooth ${inter.variable}`}>
-      <Head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-      </Head>
+      <head>
+        <meta name="apple-itunes-app" content="app-id=284882215" />
+        <meta name="google-play-app" content="app-id=com.facebook.katana" />
+        <meta name="msApplication-ID" content="82a23635-5bd9-df11-a844-00237de2db9e" />
+        <meta name="msApplication-PackageFamilyName" content="facebook_9wzdncrfhv5g" />
+        <link rel="apple-touch-icon" href="icon.png" />
+        <link rel="android-touch-icon" href="icon.png" />
+        <link rel="windows-touch-icon" href="icon.png" />
+      </head>
       <body className="custom-scrollbar min-h-screen overflow-x-hidden bg-background">{children}</body>
     </html>
   );

@@ -15,6 +15,7 @@
     "next-international": "^1.2.4",
     "react": "^18",
     "react-dom": "^18",
+    "react-smartbanner": "^5.1.4",
     "sharp": "^0.32.6",
     "tailwind-merge": "^2.4.0"
   },
@@ -22,6 +23,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-smartbanner": "^5.1.0",
     "autoprefixer": "^10",
     "eslint": "^8",
     "eslint-config-next": "14.2.5",

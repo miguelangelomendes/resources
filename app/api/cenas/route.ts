@@ -1,6 +1,7 @@
 import path from "path";
 import fs from "fs";
 import { NextRequest, NextResponse, userAgent } from "next/server";
+import { cookies } from "next/headers";
 
 export const GET = async (req: NextRequest) => {
   try {

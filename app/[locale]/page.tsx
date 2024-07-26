@@ -1,5 +1,6 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
+import SmartBanner from "react-smartbanner";
 
 import PageSection from "@/ui/Sections";
 import COMPONENTS_LIST from "@/utils/components";
@@ -20,8 +21,33 @@ export default function Home() {
     getUserAgent().then((info) => setUserAgentInfo(info));
   }, [getUserAgent]);
 
+  const testLink = useCallback(() => {
+    try {
+      const cenas = window.open("partyapp://dashboard", "_blank");
+      if (cenas) {
+        cenas.onabort = () => alert("abort");
+        cenas.onbeforeunload = () => alert("beforeunload");
+        cenas.onclose = () => alert("close");
+        cenas.onload = () => alert("load");
+        cenas.onseeked = () => alert("seeked");
+      }
+    } catch (e) {
+      console.log("BATATA", e);
+    }
+    // const cenas = window.open("partyapp://dashboard", "_blank");
+  }, []);
+
+  useEffect(() => {
+    document.cookie = "smartbanner-closed=null; expires=Thu, 18 Dec 2013 12:00:00 UTC";
+    document.cookie = "smartbanner-installed=null; expires=Thu, 18 Dec 2013 12:00:00 UTC";
+  }, []);
+
   return (
     <div>
+      <div className="h-40 w-40 bg-red-500" onClick={testLink}>
+        testLink
+      </div>
+      <SmartBanner force="ios" title={"Batata"} position="top" />
       <Accordion>
         {userAgentInfo && (
           <AccordionItem>

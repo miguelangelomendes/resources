@@ -227,7 +227,14 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^18":
+"@types/react-smartbanner@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@types/react-smartbanner/-/react-smartbanner-5.1.0.tgz#60f02d24124926e5048e4fe07a0d91fdc96dbc62"
+  integrity sha512-RZKi/zAClXzXZr21vkHtaUBxyyudh8IHRKUy3A4Mb4SkbQeVNBgcQsHi/gR82mp91JIcpNFkF5LdfT5sW+MoGA==
+  dependencies:
+    "@types/react" "^18.3.9999"
+
+"@types/react@*", "@types/react@^18", "@types/react@^18.3.9999":
   version "18.3.3"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.3.tgz#9679020895318b0915d7a3ab004d92d33375c45f"
   integrity sha512-hti/R0pS0q1/xx+TsI73XIqk26eBsISZ2R0wUijXIngRK9R/e7Xw/cXVxQK7R5JjW+SV4zGcn5hXjudkN/pLIw==
@@ -693,6 +700,16 @@ concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==
+
+cookie-cutter@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/cookie-cutter/-/cookie-cutter-0.1.1.tgz#4503fd9dd35ec7000ce945ef9cca31d75fe9ccea"
+  integrity sha512-ZYfibNuFIgGNUy8durb76zj0zLGv1JHtAM43JvuS/ezRO8Hx3yW5hec6PVuqYH8AYB6FlT0W230LlTrWEJocZg==
+
+cookies-js@^1.2.1:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/cookies-js/-/cookies-js-1.2.3.tgz#03315049e7c52bee3f73186a69167eab0ddb2d31"
+  integrity sha512-yqW9Kl46LcwedlF+2wyFSaCSwRKRrU6m3n9WoAsFfn23bpRfkEBwfOkD+lFw4jCLLs960ke/aM5Qe1BAhtgJmQ==
 
 core-util-is@~1.0.0:
   version "1.0.3"
@@ -2411,7 +2428,7 @@ process-nextick-args@~2.0.0:
   resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
   integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
 
-prop-types@^15.8.1:
+prop-types@^15.5.8, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -2465,6 +2482,16 @@ react-is@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
+react-smartbanner@^5.1.4:
+  version "5.1.4"
+  resolved "https://registry.yarnpkg.com/react-smartbanner/-/react-smartbanner-5.1.4.tgz#c20e6e68385f25d86890b3d82a0255a27093175f"
+  integrity sha512-UQ+FAsV/RYTzMw1Ok02OOxJryU4YwR0f/ckeHw/4JZi+UunQ79dj1+HE64nWurwIaa/dS9IXb0AyPXeAObXxXA==
+  dependencies:
+    cookie-cutter "^0.1.1"
+    cookies-js "^1.2.1"
+    prop-types "^15.5.8"
+    ua-parser-js "^0.7.9"
 
 react@^18:
   version "18.3.1"
@@ -3127,6 +3154,11 @@ typescript@^5:
   version "5.5.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.5.3.tgz#e1b0a3c394190838a0b168e771b0ad56a0af0faa"
   integrity sha512-/hreyEujaB0w76zKo6717l3L0o/qEUtRgdvUBvlkhoWeOVMjMuHNHk0BRBzikzuGDqNmPQbg5ifMEqsHLiIUcQ==
+
+ua-parser-js@^0.7.9:
+  version "0.7.38"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.38.tgz#f497d8a4dc1fec6e854e5caa4b2f9913422ef054"
+  integrity sha512-fYmIy7fKTSFAhG3fuPlubeGaMoAd6r0rSnfEsO5nEY55i26KSLt9EH7PLQiiqPUhNqYIJvSkTy1oArIcXAbPbA==
 
 unbox-primitive@^1.0.2:
   version "1.0.2"
