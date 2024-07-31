@@ -5,4 +5,6 @@ services:
     restart: always
     pull_policy: always
     ports:
-      - "4000:3000"
+      - "3000:3000"
+    volumes:
+      - /Users/miguel/Desktop/personal/cenas:/cenas
