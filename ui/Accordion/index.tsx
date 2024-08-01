@@ -62,7 +62,7 @@ export function AccordionTrigger({ children, index, className = "" }: any) {
 
   return (
     <div onClick={handleToggle} className={twMerge("clickable", className)}>
-      {children}
+      {typeof children === "function" ? children({ isOpen }) : children}
     </div>
   );
 }
@@ -72,7 +72,18 @@ export const AccordionItem = ({ index = 0, children }: any) => {
     throw new Error("AccordionItem should have an AccordionTrigger and AccordionContent as children");
   }
 
-  return children.map((child: ReactElement<any>) => cloneElement(child, { index }));
+  return children.map((child: ReactElement<any>) => {
+    if (Array.isArray(child.props.children)) {
+      return cloneElement(child, {
+        ...child.props,
+        index,
+        children: child.props.children.map((c: ReactElement<any>) => {
+          return cloneElement(c, { ...c.props, index });
+        }),
+      });
+    }
+    return cloneElement(child, { ...child.props, index });
+  });
 };
 
 // Accordion Item Content Component

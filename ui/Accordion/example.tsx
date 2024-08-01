@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 
-import { Dropdown, DropdownContent, DropdownTrigger } from "@/ui/Dropdown";
+import IconArrowDown from "@/ui/Icons/ArrowDown";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/ui/Accordion";
 
 interface Props {
@@ -24,9 +24,13 @@ export default function ExampleAccordion({ className = "" }: Props) {
     <Accordion>
       {EXAMPLE.map((item, index) => (
         <AccordionItem key={index} index={index}>
-          <AccordionTrigger className={twMerge("flex justify-between border-b px-4 py-1", className)}>
-            <p>{item.title}</p>
-            <div>{index}</div>
+          <AccordionTrigger>
+            {({ isOpen }: any) => (
+              <div className={twMerge("flex justify-between border-b py-1", className)}>
+                <p>{item.title}</p>
+                <IconArrowDown className={twMerge("clickable w-3", isOpen ? "rotate-180" : "rotate-0")} />
+              </div>
+            )}
           </AccordionTrigger>
           <AccordionContent>{item.content}</AccordionContent>
         </AccordionItem>

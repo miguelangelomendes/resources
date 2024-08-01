@@ -5,6 +5,10 @@
   },
   "accordion": {
     "output": "Accordion.zip",
-    "sources": ["./ui/Accordion"]
+    "sources": ["./ui/Accordion", "./ui/Icons/ArrowDown"]
+  },
+  "transitions": {
+    "output": "Transitions.zip",
+    "sources": ["./ui/transitions"]
   }
 }
